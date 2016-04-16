@@ -2,11 +2,12 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 // var Styles = require('./scss/main.scss'); // es5
 import './scss/main.scss'; // es6
+import Renderer from './renderer.js'
 
 var Main = React.createClass({
 	getInitialState: function(){
 		return {
-			data: 'farts over here'
+			students: ''
     }
   },
 
@@ -19,7 +20,7 @@ var Main = React.createClass({
 		.then(function(json) {
 			// console.log(json);
 			this.setState({
-				data: json
+				students: json
 			});
 		}.bind(this));
 
@@ -32,12 +33,10 @@ var Main = React.createClass({
 
 	render: function() {
 
-			console.log(this.state.data)
+			// console.log(this.state.students)
+		
 		return (
-			<div className="test">
-				farts
-				
-			</div>
+			<Renderer students={this.state.students} />
 		)
 	}
 });

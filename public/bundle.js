@@ -48,17 +48,24 @@
 
 	__webpack_require__(1);
 
+	var _renderer = __webpack_require__(163);
+
+	var _renderer2 = _interopRequireDefault(_renderer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var React = __webpack_require__(5);
 	var ReactDOM = __webpack_require__(162);
 	// var Styles = require('./scss/main.scss'); // es5
 	// es6
+
 
 	var Main = React.createClass({
 		displayName: 'Main',
 
 		getInitialState: function getInitialState() {
 			return {
-				data: 'farts over here'
+				students: ''
 			};
 		},
 
@@ -69,7 +76,7 @@
 			}).then(function (json) {
 				// console.log(json);
 				this.setState({
-					data: json
+					students: json
 				});
 			}.bind(this));
 		},
@@ -80,12 +87,9 @@
 
 		render: function render() {
 
-			console.log(this.state.data);
-			return React.createElement(
-				'div',
-				{ className: 'test' },
-				'farts'
-			);
+			// console.log(this.state.students)
+
+			return React.createElement(_renderer2.default, { students: this.state.students });
 		}
 	});
 
@@ -126,7 +130,7 @@
 
 
 	// module
-	exports.push([module.id, ".test {\n  background-color: #002427;\n  color: white; }\n", ""]);
+	exports.push([module.id, ".main-container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  width: 100%; }\n\n.card {\n  display: block;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  width: 15%;\n  border: 1px solid #c1cdd1;\n  padding: 10px;\n  margin: 10px;\n  cursor: pointer; }\n  .card img {\n    width: 90%; }\n  .card:hover {\n    background-color: #c1cdd1; }\n\nul {\n  width: 90%; }\n\nli {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  height: 40px; }\n  li .userName {\n    width: 15%;\n    height: 100%; }\n  li .userImg {\n    width: 15%;\n    height: 100%; }\n  li .allTime {\n    width: 35%;\n    height: 100%; }\n  li .recent {\n    width: 35%;\n    height: 100%; }\n  li img {\n    height: 90%;\n    width: auto; }\n", ""]);
 
 	// exports
 
@@ -20043,6 +20047,74 @@
 
 	module.exports = __webpack_require__(7);
 
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+
+	var Renderer = React.createClass({
+	  displayName: 'Renderer',
+
+	  render: function render() {
+
+	    var studentArray = [];
+
+	    var onClick = function onClick(student) {
+	      // console.log('https://www.freecodecamp.com/' + student)
+	      window.location = 'https://www.freecodecamp.com/' + student;
+	    };
+
+	    this.onClick = onClick;
+
+	    for (var student in this.props.students) {
+	      studentArray.push(React.createElement(
+	        'div',
+	        { className: 'card', key: student.id, onClick: this.onClick.bind(this, this.props.students[student].username) },
+	        React.createElement('img', { src: this.props.students[student].img }),
+	        React.createElement(
+	          'div',
+	          { className: 'info' },
+	          React.createElement(
+	            'div',
+	            { className: 'userName' },
+	            this.props.students[student].username
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'allTime' },
+	            this.props.students[student].alltime
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'recent' },
+	            this.props.students[student].recent
+	          )
+	        )
+	      )
+	      /*<a className='card' href={'https://www.freecodecamp.com/' + this.props.students[student].username}>
+	        <img src={this.props.students[student].img} />
+	        <div className='info'>
+	          <div className='userName'>{this.props.students[student].username}</div>
+	          <div className='allTime'>{this.props.students[student].alltime}</div>
+	          <div className='recent'>{this.props.students[student].recent}</div>
+	        </div>
+	      </a>*/
+	      );
+	    };
+
+	    return React.createElement(
+	      'div',
+	      { className: 'main-container' },
+	      studentArray
+	    );
+	  }
+	});
+
+	module.exports = Renderer;
 
 /***/ }
 /******/ ]);
