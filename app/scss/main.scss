@@ -1,5 +1,5 @@
 @import "palette";
-// @import "typography";
+@import "typography";
 
 @mixin flexy($direction) {
 	display: flex;
@@ -24,14 +24,15 @@
 	@include flexy(column);
 	// flex-direction: column;
 	width: 15%;
-	border: 1px solid $light-blue-grey;
-	padding: 10px;
-	margin: 10px;
+	// border: 1px solid $light-blue-grey;
+	// padding: 10px;
+	margin: 7px;
 
 	cursor: pointer;
 
 	img {
-		width: 90%;
+		width: 100%;
+		height: auto;
 	}
 
 	&:hover {
@@ -39,43 +40,52 @@
 	}
 }
 
-
-
-
-
-ul {
-	width: 90%;
-}
-
-li {
+.info {
 	@include flexy(row);
 	justify-content: flex-start;
-	
-	height: 40px;
 
-	.userName {
-		width: 15%;
-		height: 100%;
+	@include lato;
+
+	width: 100%;
+
+	background-color: $deep-orange;
+
+	.rank {
+		@include abril-fatface;
+
+		// background-color: $orange;
+		// color: $deep-orange;
+
+		color: $orange;
+		background-color: $deep-orange;
+
+		font-size: 3em;
+		line-height: 1em;
+		// width: 30%;
+		padding: 0 7px 0 5px;
 	}
 
-	.userImg {
-		width: 15%;
-		height: 100%;
+	.info-block {
+		@include flexy(column);
+		align-items: flex-start;
 	}
 
-	.allTime {
-		width: 35%;
-		height: 100%;
+	.user-name {
+		color: $grey-blue;
 	}
 
-	.recent {
-		width: 35%;
-		height: 100%;
+	.stats {
+		@include lato-light;
+		width: 60%;
+		@include flexy(row);
+		justify-content: flex-start;
+		color: $grey-blue;
 	}
-	
-	img {
-		height: 90%;
-		width: auto;
-	}
+}
 
+.icon {
+	flex-shrink: 0;
+	width: 24px;
+	height: 24px;
+	fill: $grey-blue;
 }

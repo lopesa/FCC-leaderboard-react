@@ -2,7 +2,9 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 // var Styles = require('./scss/main.scss'); // es5
 import './scss/main.scss'; // es6
-import Renderer from './renderer.js'
+import Renderer from './renderer.js';
+
+
 
 var Main = React.createClass({
 	getInitialState: function(){

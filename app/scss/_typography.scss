@@ -1,0 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Abril+Fatface|Lato:400,300,100);
+
+@mixin abril-fatface {
+	font-family: 'Abril Fatface', cursive;
+	font-weight: 400;
+	font-style: normal;
+}
+
+@mixin lato {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+@mixin lato-light {
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	font-style: normal;
+}

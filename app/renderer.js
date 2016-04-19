@@ -10,29 +10,29 @@ var Renderer = React.createClass({
       window.location = 'https://www.freecodecamp.com/' + student;
     }
 
+    var recentIcon = '<use xlink:href=#recent />';
+    var allTimeIcon = '<use xlink:href=#allTime />';
+
     this.onClick = onClick;
 
     for (var student in this.props.students) {
       studentArray.push(
-        <div className='card' key={student.id} onClick={this.onClick.bind(this, this.props.students[student].username)}>
+        <div className='card' key={student} onClick={this.onClick.bind(this, this.props.students[student].username)}>
           <img src={this.props.students[student].img} />
           <div className='info'>
-            <div className='userName'>{this.props.students[student].username}</div>
-            <div className='allTime'>{this.props.students[student].alltime}</div>
-            <div className='recent'>{this.props.students[student].recent}</div>
+            <div className='rank'>{Number(student) + 1}</div>
+            <div className='info-block'>
+              <div className='user-name'>{this.props.students[student].username}</div>
+              <div className='stats'>
+                <svg className='icon' dangerouslySetInnerHTML={{__html: allTimeIcon }} />
+                {this.props.students[student].alltime}
+                <svg className='icon' dangerouslySetInnerHTML={{__html: recentIcon }} />
+                {this.props.students[student].recent}
+              </div>
+            </div>
           </div>
         </div>
-        /*<a className='card' href={'https://www.freecodecamp.com/' + this.props.students[student].username}>
-          <img src={this.props.students[student].img} />
-          <div className='info'>
-            <div className='userName'>{this.props.students[student].username}</div>
-            <div className='allTime'>{this.props.students[student].alltime}</div>
-            <div className='recent'>{this.props.students[student].recent}</div>
-          </div>
-        </a>*/
-      )
-
-    };
+      )};
     
     return (
       <div className='main-container'>
