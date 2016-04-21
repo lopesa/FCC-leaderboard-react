@@ -24,10 +24,14 @@ var Renderer = React.createClass({
             <div className='info-block'>
               <div className='user-name'>{this.props.students[student].username}</div>
               <div className='stats'>
-                <svg className='icon' dangerouslySetInnerHTML={{__html: allTimeIcon }} />
-                {this.props.students[student].alltime}
-                <svg className='icon' dangerouslySetInnerHTML={{__html: recentIcon }} />
-                {this.props.students[student].recent}
+                <div className='recent'>
+                  <svg className='icon' dangerouslySetInnerHTML={{__html: recentIcon }} />
+                  {this.props.students[student].recent}
+                </div>
+                <div className='all-time'>
+                  <svg className='icon' dangerouslySetInnerHTML={{__html: allTimeIcon }} />
+                  {this.props.students[student].alltime}
+                </div>
               </div>
             </div>
           </div>
@@ -35,7 +39,7 @@ var Renderer = React.createClass({
       )};
     
     return (
-      <div className='main-container'>
+      <div className='card-container'>
         {studentArray}
       </div>
     )

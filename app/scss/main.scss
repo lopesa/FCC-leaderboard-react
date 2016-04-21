@@ -1,3 +1,7 @@
+
+@import "../../node_modules/sanitize.css/lib/sanitize.sass";
+@import "../../node_modules/breakpoint-sass/stylesheets/breakpoint";
+
 @import "palette";
 @import "typography";
 
@@ -11,12 +15,62 @@
 // =====================
 
 .main-container {
-	@include flexy(row);
-	// flex-direction: column;
-	justify-content: flex-start;
-	flex-wrap: wrap;
+	@include flexy(column);
+	margin: 0 auto;
 
+	width: 90%;
+}
+
+.header {
+	@include flexy(row);
 	width: 100%;
+
+	.buttons {
+		@include flexy(row);
+		justify-content: flex-end;
+		// width: 100%;
+		flex-grow: 1;
+		// align-self: flex-end;
+
+		@include lato-light;
+		color: $deep-orange;
+	}
+
+	h1 {
+		// align-self: flex-start;
+		@include lato;
+		font-size: 2em;
+		color: $deep-orange;
+	}
+
+	button {
+		background-color: $light-blue-grey;
+		color: $white;
+
+		&.active {
+			background-color: $deep-orange;
+			// color: $white;
+		}
+		// &:nth-of-type(1) {
+		// 	background-color: $light-orange;
+		// }
+
+		// &:nth-of-type(2) {
+		// 	background-color: $mid-orange;
+		// }
+		// background-color: $deep-orange;
+		// border: 1px solid $deep-orange;
+		width: 45%;
+		height: 100%;
+		margin: 0 1%;
+		cursor: pointer;
+	}
+}
+
+.card-container {
+	@include flexy(row);
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .card {
@@ -24,6 +78,7 @@
 	@include flexy(column);
 	// flex-direction: column;
 	width: 15%;
+	// flex-grow: 1;
 	// border: 1px solid $light-blue-grey;
 	// padding: 10px;
 	margin: 7px;
@@ -49,6 +104,8 @@
 	width: 100%;
 
 	background-color: $deep-orange;
+	// background-color: $light;
+	// border: 1px solid $deep-orange;
 
 	.rank {
 		@include abril-fatface;
@@ -57,7 +114,7 @@
 		// color: $deep-orange;
 
 		color: $orange;
-		background-color: $deep-orange;
+		// background-color: $orange;
 
 		font-size: 3em;
 		line-height: 1em;
@@ -68,18 +125,43 @@
 	.info-block {
 		@include flexy(column);
 		align-items: flex-start;
+		flex-grow: 1;
 	}
 
 	.user-name {
+		// color: $orange;
 		color: $grey-blue;
 	}
 
 	.stats {
 		@include lato-light;
-		width: 60%;
+		// width: 60%;
 		@include flexy(row);
-		justify-content: flex-start;
+		justify-content: space-between;
 		color: $grey-blue;
+		width: 100%;
+
+		div {
+			@include flexy(row);
+		}
+
+		.recent {
+			color: $light-orange;
+			
+			.icon {
+				fill: $light-orange;
+			}
+		}
+
+		.all-time {
+			margin-right:5px;
+			color: $mid-orange;
+
+			.icon {
+				fill: $mid-orange;
+			}
+		}
+
 	}
 }
 
@@ -88,4 +170,12 @@
 	width: 24px;
 	height: 24px;
 	fill: $grey-blue;
+}
+
+.fetchbar {
+	width: 100%;
+	height: 6px;
+	background-color: $light-blue-grey;
+	// background-color: $deep-orange;
+	margin: 7px 0 4px 0;
 }

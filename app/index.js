@@ -2,7 +2,9 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 // var Styles = require('./scss/main.scss'); // es5
 import './scss/main.scss'; // es6
+import Header from './header.js';
 import Renderer from './renderer.js';
+import Fetchbar from './fetchbar.js';
 
 
 
@@ -38,7 +40,11 @@ var Main = React.createClass({
 			// console.log(this.state.students)
 		
 		return (
-			<Renderer students={this.state.students} />
+			<div className='main-container'>
+				<Header />
+				<Fetchbar />
+				<Renderer students={this.state.students} />
+			</div>
 		)
 	}
 });

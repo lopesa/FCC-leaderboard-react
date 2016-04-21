@@ -1,9 +1,13 @@
 var autoprefixer = require('autoprefixer');
+var path = require("path");
 
 module.exports = {
   entry: "./app",
   output: {
-    filename: "public/bundle.js"
+    filename: "public/bundle.js",
+    path: path.resolve(__dirname, "public"),
+    // publicPath: "/assets/",
+    filename: "bundle.js"
   },
   module: {
     loaders: [
