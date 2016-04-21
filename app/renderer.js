@@ -1,6 +1,7 @@
 var React = require('react');
 
 var Renderer = React.createClass({
+
   render: function(){
 
     var studentArray = []
@@ -14,6 +15,7 @@ var Renderer = React.createClass({
     var allTimeIcon = '<use xlink:href=#allTime />';
 
     this.onClick = onClick;
+
 
     for (var student in this.props.students) {
       studentArray.push(
